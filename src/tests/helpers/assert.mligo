@@ -1,9 +1,19 @@
-let tx_success (s) =
-  match s with
-  | Ok (x) => x
-  | Error (x) => failwith x
 
-let tx_fail (s) =
-    match s with
-    | Ok (x) => failwith "expected failure"
-    | Error (x) => x
+let tx_fail (res, expected: test_exec_result * string) : unit =
+    let expected_err = Test.eval expected in
+    match res with
+        Success _ -> failwith "contract success but expected failure"
+        | Fail (error) ->
+            (match error with 
+                Rejected (reject_err) -> 
+                    let (michelson_err, address) = reject_err in
+                    assert (michelson_err = expected_err)
+                | Balance_too_low _ -> failwith "contract failed: balance too low"
+                | Other s -> failwith s
+            )
+
+
+let tx_success = function
+    Success _ -> ()
+    | Fail _ -> failwith "contract failed but expected success"
+
