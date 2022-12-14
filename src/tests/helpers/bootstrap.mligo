@@ -1,8 +1,8 @@
-#import "../src/contracts/main.mligo" "Main"
+#import "../../src/contracts/main.mligo" "Main"
 
-let base_storage = 0n
+let base_storage = 0
 
-(* Boostrapping of the test environment *)
+(* Bootstrapping of the test environment *)
 let boot_accounts (inittime : timestamp) =
     let () = Test.reset_state_at inittime 6n ([] : tez list) in
     let accounts =
@@ -16,4 +16,4 @@ let originate_contract (init_storage : Main.storage) =
     let (taddr, _, _) = Test.originate Main.main init_storage 0mutez in
     let contr = Test.to_contract taddr in
     let addr = Tezos.address contr in
-    {addr = addr; taddr = taddr; contr = contr}
+    (addr, taddr, contr)

@@ -1,5 +1,5 @@
 {
-  "name": "tezos-student-2k22",
+  "name": "tezos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lutenruto/Tezos-student-2K22.git"
+    "url": "git+https://github.com/LeoEsgi/Tezos.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Lutenruto/Tezos-student-2K22/issues"
+    "url": "https://github.com/LeoEsgi/Tezos/issues"
   },
-  "homepage": "https://github.com/Lutenruto/Tezos-student-2K22#readme"
+  "homepage": "https://github.com/LeoEsgi/Tezos#readme"
 }

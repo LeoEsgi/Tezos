@@ -53,3 +53,4 @@ let getUserText (user, store : address * Storage.t) : Storage.value * Storage.ti
     match Map.find_opt user store.user_map with
         Some m -> m
         | None -> failwith Errors.no_entry
+
