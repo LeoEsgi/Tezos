@@ -21,5 +21,5 @@ let call_increment_success (p, contr : int * contr) =
 let call_decrement (p, contr : int * contr) =
     call(Decrement(p), contr)
 
-// let call_decrement_success (p, contr : Main.parameter * contr) =
-//     Assert.tx_success (call_increment(p, contr))
+let call_decrement_success (p, contr : Main.parameter * contr) =
+    Assert.tx_success (call_increment(p, contr))

@@ -1,3 +1,14 @@
+
+
+let tx_success(res: test_exec_result) : unit =
+    match res with
+        Success _ -> ()
+        | Fail (Rejected (error, _))  ->
+           let () = Test.log(error) in
+           Test.failwith "contract failed but expected success"
+        | Fail _ -> failwith "contract failed but expected success"
+   
+
 let tx_fail (res, expected: test_exec_result * string) : unit =
     let expected_err = Test.eval expected in
     match res with
@@ -7,9 +18,4 @@ let tx_fail (res, expected: test_exec_result * string) : unit =
                 failwith "contract failed with wrong error"
             else
                 ()
-
-let tx_success(res: test_exec_result) : unit =
-    match res with
-        Success _ -> ()
-        | Fail _ -> failwith "contract failed but expected success"
-   
+                
